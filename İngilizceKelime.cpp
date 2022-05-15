@@ -8,10 +8,10 @@ int main(){
 	setlocale(LC_ALL, "Turkish");
 	system("color f5");
 	
-	string kelimeler1[4]={"Glass","Human","Cat","Air",};
-	string ceviriler1[4]={"Cam","insan","Kedi","Hava"};
-	string ceviriler2[4]={"cam","insan","kedi","hava"};
-	string ceviriler3[4]={"CAM","INSAN","KEDİ","HAVA"};
+	string kelimeler1[4]={"Mother","Human","Cat","Air",};
+	string ceviriler1[4]={"Anne","insan","Kedi","Hava"};
+	string ceviriler2[4]={"anne","insan","kedi","hava"};
+	string ceviriler3[4]={"ANNE","INSAN","KEDİ","HAVA"};
 	string c1;
 
 	
