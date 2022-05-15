@@ -1,3 +1,9 @@
+/*
+Arkadaşlar cin kısmında Türkçe karakter sorunu var.Bu sebeple Python'da daha gelişmiş bir uygulama yapacağım.
+Cin Türkçe karakter sorununu aşamadım malesef :/ 
+Bu sebeple burada bu uygulamayı bırakıyorum.
+*/
+
 #include<iostream>
 #include<locale.h>
 #include<string>
