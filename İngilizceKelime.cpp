@@ -1,3 +1,13 @@
+#include<iostream>
+#include<locale.h>
+#include<string>
+using namespace std; 
+
+
+int main(){
+	setlocale(LC_ALL, "Turkish");
+	system("color f5");
+	
 	string kelimeler1[4]={"Glass","Human","Cat","Air",};
 	string ceviriler1[4]={"Cam","insan","Kedi","Hava"};
 	string ceviriler2[4]={"cam","insan","kedi","hava"};
@@ -29,3 +39,8 @@
 	}
 	
 	return 0;
+}
+
+
+
+
