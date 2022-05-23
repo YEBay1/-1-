@@ -6,10 +6,13 @@ BOTU GELİŞTİRMEYİ DÜŞÜNÜYORUM.İLERLEME SAĞLADIĞIMDA DOSYAYI GÜNCELLE
 """
 
 
+import time
 from telebot import TeleBot
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
+from GoogleNews import GoogleNews
+from time import gmtime, strftime
 
 
 bot = TeleBot(token=" Buraya BotFather ile oluşturduğunuz Botun token değerini giriyorsunuz ")               # Token değerini kimse ile paylaşmayınız
@@ -45,11 +48,32 @@ donusum=json.dumps(a,indent=1)   # Json dizesine çeviriririz
 
 
 
+# Bitcoin Haberlerini Alma
+googlenews=GoogleNews()
+googlenews=GoogleNews(lang="en")
+a2=time.time()
+s = strftime("%d/%b/%Y ", gmtime(a2))
+googlenews=GoogleNews(start=s)
+A=googlenews.get_news("btc")     # anahtar kelime girişi
+G = googlenews.results()
+
+a=G[1]['title']
+c=G[1]['link']
+d=G[2]['title']
+f=G[2]['link']
+
+@bot.message_handler(commands=['btc'])      #/btc komutu girildiğinde...
+def botu_baslatma(start):
+     bot.reply_to(start, a)
+     bot.reply_to(start, c)
+     bot.reply_to(start, d)
+     bot.reply_to(start,f)
 
 
 
+    
+    
 # BOT İLE MESAJ GÖNDERME
-
 
 @bot.message_handler(commands=['start'])      # /start komutu girildiğinde
 def botu_baslatma(start):
