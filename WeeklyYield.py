@@ -19,7 +19,11 @@ saaty = np.array([ptesi,sali,csamba,psembe,cuma,ctesi,pazar])
 plt.plot(haftx, saaty)
 plt.show()
 
-
+günlükort=float(ptesi+sali+csamba+psembe+cuma+ctesi+pazar)/7
+saat=int(günlükort)
+dakika=günlükort-int(günlükort)
+sonuc=(saat*60)+dakika
+print("Bu hafta Günlük Ortalama ",int(sonuc)," dakika çalışıldı")
 
 
 
