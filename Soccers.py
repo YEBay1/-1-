@@ -12,8 +12,9 @@ ENCHAMP=soccer_data.english_championship()
 
 print("League Codes","English Premier --> EN","LaLiga --> LA","Ligue1 --> LI1","Bundesliga --> BU","SerieA --> SA","Russian Premier --> RUS","English Championship --> ENCHAMP",sep="\n")
 
-a=EN
-print("\n","\n")
+b=input()
+c={"EN":EN,"LA":LA,"LI1":LI1,"BU":BU,"SA":SA,"RUS":RUS,"ENCHAMP":ENCHAMP}
+a=c[b]
 
 print("    Team                           Matches      Wins     Losses     Goals For    Goals Against     Points")
 
@@ -24,9 +25,5 @@ for i in range(len(a)):
     else:
         print(125 * "-")
         print("0"+a[i]['pos'],"-",a[i]['team'], (30-len(a[i]['team'])) * " ", a[i]['matches_played'],8*" ",a[i]['wins'],5*" ",a[i]['losses'],8*" ", a[i]['goals_for'],10*" ",a[i]['goals_against'],14*" ",a[i]['points'])
-
-
         
-"""
-Kullanıcı ile iletişime geçme kısmını daha yapmadım.Bugünlük bu kadar
-"""
+        
