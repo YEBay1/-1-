@@ -23,15 +23,15 @@ int main(){
 	cout<<"\n";
 	
 	if (islem=="1"){
-		cout<<a+b<<endl;	
+		cout<<"Sonuç -->"<<a+b<<endl;	
 	}
 	else if(islem=="2"){
-		cout<<a-b<<endl;
+		cout<<"Sonuç -->"<<a-b<<endl;
 	}
 	else if(islem=="3"){
-		cout<<a*b<<endl;
+		cout<<"Sonuç -->"<<a*b<<endl;
 	}
 	else{
-		cout<<float(a/b)<<endl;
+		cout<<"Sonuç -->"<<a/b<<endl;
 	}
 }
