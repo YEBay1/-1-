@@ -4,7 +4,7 @@ import cv2
 from translate import Translator
 import urllib.request
 
-url='https://api.nasa.gov/planetary/apod?api_key=WfGFbapMzkTX7cLCPG06ADSgBWtcumTTpOJHHOdt'
+url='https://api.nasa.gov/planetary/apod?api_key=         '
 translator= Translator(to_lang="tr")
 
 session = Session()
