@@ -1,7 +1,6 @@
 import json
 from requests import Request, Session
 import cv2
-from translate import Translator
 import urllib.request
 
 url='https://api.nasa.gov/planetary/apod?api_key=         '
