@@ -1,30 +1,21 @@
 import socket 
 
+s=socket.socket()
+
 host="localhost"
 port = 12345 
 
 try:
-    s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    print("Socket Oluşturuldu")
+    s.connect((host,port))
     
-    s.bind((host,port))
-    print("Socket {} nolu porta bağlandı".format(port))
+    yanit=s.recv(1024)
+    print(yanit.decode("utf-8"))
     
-    s.listen(5) 
-    print("Socket dinleniyor")
-   
+    s.close()
+    
 except socket.error as msg:
-    print("Hata",msg)
+    print("[Server aktif değil] Mesaj:",mgs)
     
-while True:
-    c,addr=s.accept()
-    print('Gelen bağlantı',addr)
-    
-    mesaj="Merhaba"
-    c.send(mesaj.encode('utf-8'))
-    
-    c.close()
-
 
 
 """
