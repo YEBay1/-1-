@@ -1,7 +1,21 @@
+import time
 import matplotlib.pyplot as plt
 import numpy as np
 import openpyxl
 from openpyxl import Workbook
+from openpyxl import load_workbook
+
+def Kronometre():
+    gir=input("Kronometreyi başlatmak için T'ye tıklayın -->")
+    if gir=="T":
+        print("Başlangıç Zamanı -->",time.strftime('%X'))
+        stop1=input("Kronometreyi durdurmak için Y'ye Tıklayın")
+        if stop1=="Y":
+            print("Bitiş Zamanı -->",time.strftime("%X"))
+
+    else:
+        pass
+
 
 def HaftalıkVerimHesaplama():
     print("Günlerin önüne kaç saat çalıştığınızı yazın")
@@ -44,8 +58,18 @@ def HaftalıkVerimHesaplama():
     wb.save("rapor.xlsx")
 
 
+
+    for i in range(len(hours)-1):           
+        if hours[i]>23:
+            print("Hatalı Veri Girişi")
+            HaftalıkVerimHesaplama()
+        else:
+            pass
+
+
     if gunlukort>=24:
-        print("HATALI VERİ GİRMİŞ OLABİLİRSİNİZ.LÜTFEN GİRDİĞİNİZ VERİLERİ KONTROL EDİN VEYA UYGULAMAYI TEKRAR ÇALIŞTIRIN")
+        print("HATALI VERİ GİRMİŞ OLABİLİRSİNİZ.LÜTFEN GİRDİĞİNİZ VERİLERİ KONTROL EDİN")
+        HaftalıkVerimHesaplama()
     else:
         saat = int(gunlukort)
         dakika = gunlukort - int(gunlukort)
@@ -60,22 +84,19 @@ def HaftalıkVerimHesaplama():
         plt.plot(haftx, saaty)
         plt.show()
     elif giris=="E":
-        f = open("rapor.xlsx", "r")     # Burada kullanıcı için dosyanın açılması gerekiyor
-        print(f.read())
+        dosya1 = load_workbook("rapor.xlsx")
+        sheet = dosya1.active
+
+        dosya = load_workbook("rapor.xlsx")
+        sheet = dosya.active
+        for row in sheet.iter_rows(min_row=1, min_col=1, max_row=7, max_col=2):
+            for cell in row:
+                print(cell.value, end=" ")
+            print()
+
+            dosya.close()
+
     else:
         pass
 
 HaftalıkVerimHesaplama()
-
-
-"""
-Bu uygulama geliştirilecektir
-"""
-
-
-
-
-
-
-
-
