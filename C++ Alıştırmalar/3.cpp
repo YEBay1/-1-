@@ -10,7 +10,10 @@ int main(){
 	
 	if((num%2)==0) 
 	cout<<"Bu bir çift sayidir \n";
-	else cout<<"Bu bir tek sayidir \n";
+		
+	else 
+	cout<<"Bu bir tek sayidir \n";
+		
 	}while(num != 0);
 	
 	return 0;
