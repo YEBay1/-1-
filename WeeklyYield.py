@@ -5,16 +5,59 @@ import openpyxl
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
-def Kronometre():
-    gir=input("Kronometreyi başlatmak için T'ye tıklayın -->")
-    if gir=="T":
-        print("Başlangıç Zamanı -->",time.strftime('%X'))
-        stop1=input("Kronometreyi durdurmak için Y'ye Tıklayın")
-        if stop1=="Y":
-            print("Bitiş Zamanı -->",time.strftime("%X"))
+def anauygulama():
+    print("Uygulamamıza Hoşgeldiniz!")
+
+    giris2=input("Kronometre Uygulaması için A'ya tıklayın,Haftalık Verim Hesaplayıcı için ise B'ye tıklayın -->")
+    if giris2=="A":
+        KronometreUygulamasi()
+    elif giris2=="a":
+        KronometreUygulamasi()
+    elif giris2=="B":
+        HaftalıkVerimHesaplama()
+    elif giris2=="b":
+        HaftalıkVerimHesaplama()
+    else:
+        anauygulama()
+
+
+
+
+
+def KronometreUygulamasi():
+    gir = input("Kronometreyi başlatmak için T'ye tıklayın -->")
+    if gir == "T":
+        bas=time.strftime('%X')
+        print("Başlangıç Zamanı -->", bas)
+        bel= input("Kronometreyi durdurmak için X'e")
+        if bel == "X":
+            son = time.strftime('%X')
+            print("Bitiş Zamanı -->", son)
+            bassaat = int(bas[0:2])
+            basdk = int(bas[3:5])
+            sonsaat = int(son[0:2])
+            sondk = int(son[3:5])
+            saat = sonsaat - bassaat
+            dakika = sondk - basdk
+            print(time.strftime('%x'), " Toplam Çalışılan Süre", saat, "saat", "-", dakika, "dakika")
+            print("\n")
+
+
+            wb = openpyxl.Workbook()
+            sheet = wb.active
+            i=0
+            a1 = sheet.cell(row=i + 1, column=1)
+            a1.value = saat , dakika
+
+
+
+            wb.save(str(time.strftime('%x'))+".xlsx")
+            KronometreUygulamasi()
 
     else:
         pass
+
+
 
 
 def HaftalıkVerimHesaplama():
@@ -35,7 +78,6 @@ def HaftalıkVerimHesaplama():
     gunlukort = float(a + b + c + d + e + f + g) / 7
     hours=[a,b,c,d,e,f,g]
     gunler=["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"]
-    dosya="rapor.xlsx"
     wb = openpyxl.Workbook()
     sheet = wb.active
 
@@ -59,7 +101,7 @@ def HaftalıkVerimHesaplama():
 
 
 
-    for i in range(len(hours)-1):           
+    for i in range(len(hours)-1):
         if hours[i]>23:
             print("Hatalı Veri Girişi")
             HaftalıkVerimHesaplama()
@@ -99,4 +141,6 @@ def HaftalıkVerimHesaplama():
     else:
         pass
 
-HaftalıkVerimHesaplama()
+
+
+anauygulama()
