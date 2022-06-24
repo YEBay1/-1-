@@ -5,6 +5,7 @@ import openpyxl
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
+
 def anauygulama():
     print("Uygulamamıza Hoşgeldiniz!")
 
@@ -39,21 +40,23 @@ def KronometreUygulamasi():
             sondk = int(son[3:5])
             saat = sonsaat - bassaat
             dakika = sondk - basdk
-            print(time.strftime('%x'), " Toplam Çalışılan Süre", saat, "saat", "-", dakika, "dakika")
+            t=time.strftime('%x'), " Toplam Çalışılan Süre", saat, "saat", "-", dakika, "dakika"
+            print(t)
             print("\n")
 
+            """
+            Kullanıcının çalıştığı her olayda değişken bir dosyaya yazdırılır.Sonrada dosyadan okuma yapılır ve Dosyadaki veriler toplanır  --> txt dosyası olur.Okunan veriler bir listeye atanır
+            Tek tek çağırılarak toplanır
+            """
+            
+            A=time.strftime('%x')
+            B=A[0:2]
+            C=A[3:5]
+            D=A[6:8]
+            dosya2 = open(str(B+" "+C+" "+D)+".txt","w")  
+            dosya2.write(str(t))
 
-            wb = openpyxl.Workbook()
-            sheet = wb.active
-            i=0
-            a1 = sheet.cell(row=i + 1, column=1)
-            a1.value = saat , dakika
-
-
-
-            wb.save(str(time.strftime('%x'))+".xlsx")
             KronometreUygulamasi()
-
     else:
         pass
 
@@ -144,3 +147,5 @@ def HaftalıkVerimHesaplama():
 
 
 anauygulama()
+
+
