@@ -1,21 +1,21 @@
 /*
-Çalışan bir kişinin toplam mesai saatinin ve maaşının girildiği bir program yazın.
-Sonra çalışanın net maaşını ekranda gösterin 
-Saat sayısı ve maaşı kullanıcı tarafından girilsin 
+Çalışanın toplam mesai saati ve saatlik ücreti kullanıcı tarafından girilecek 
+Kullanıcıya Ödenecek tutar gösterilecek 
 */
 
 #include<iostream>
 using namespace std;
 
 int main(){
-	int mesaisaat,maas,sonuc;
+	double saat,ucret;
 	
-	cout<<"Mesai saat sayisini giriniz -->";
-	cin>>mesaisaat;
+	cout<<"Calisilan Toplam Saati Girin: ";
+	cin>>saat;
 	
-	cout<<"Maasi girin -->";
-	cin>>maas;
+	cout<<"Saat basi ucreti girin: ";
+	cin>>ucret;
 	
-	sonuc=((maas/30)*mesaisaat)+maas;
-	cout<<sonuc;
+	cout<<"Odenecek: $" << saat*ucret;
+	
+	return 0;
 }
