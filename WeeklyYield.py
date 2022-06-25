@@ -4,10 +4,39 @@ import numpy as np
 import openpyxl
 from openpyxl import Workbook
 from openpyxl import load_workbook
+import mysql.connector
+
+mydb=mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="19071234",
+    database="uygulama1"
+)
+mycursor=mydb.cursor()
+
+def girispaneli():
+    o=input("Giriş yapmak için 1'e,Kayıt olmak için ise 2'ye tıklayın: ")
+    if o=="1":
+        
+    if o=="2":
+        adi=input("Lütfen Adınızı Girin: ")
+        sifre=input("Lütfen Şifrenizi Girin")
+        sql="INSERT INTO uygulama1 (ad,sifre) VALUES (%s,%s)"
+        val=(adi,sifre)
+        mycursor.execute(sql,val)
+        mydb.commit()
+        print(mycursor.rowcount," Kaydınız başarıyla eklenmiştir")
+    
+    else:
+        girispaneli()
+    
+
 
 
 def anauygulama():
     print("Uygulamamıza Hoşgeldiniz!")
+
+    girispaneli()
 
     giris2=input("Kronometre Uygulaması için A'ya tıklayın,Haftalık Verim Hesaplayıcı için ise B'ye tıklayın -->")
     if giris2=="A":
@@ -25,12 +54,15 @@ def anauygulama():
 
 
 
+
 def KronometreUygulamasi():
+    a = " "
     gir = input("Kronometreyi başlatmak için T'ye tıklayın -->")
-    if gir == "T":
+    h=gir.lower()
+    if h == "t":
         bas=time.strftime('%X')
         print("Başlangıç Zamanı -->", bas)
-        bel= input("Kronometreyi durdurmak için X'e")
+        bel= input("Kronometreyi durdurmak için X'e tıklayın ->")
         if bel == "X":
             son = time.strftime('%X')
             print("Bitiş Zamanı -->", son)
@@ -40,20 +72,15 @@ def KronometreUygulamasi():
             sondk = int(son[3:5])
             saat = sonsaat - bassaat
             dakika = sondk - basdk
-            t=time.strftime('%x'), " Toplam Çalışılan Süre", saat, "saat", "-", dakika, "dakika"
-            print(t)
+            t=time.strftime('%x') + " Toplam Çalışılan Süre " + str(saat) + "saat" + "-" + str(dakika) + "dakika"
+            print(str(t))
             print("\n")
 
-            """
-            Kullanıcının çalıştığı her olayda değişken bir dosyaya yazdırılır.Sonrada dosyadan okuma yapılır ve Dosyadaki veriler toplanır  --> txt dosyası olur.Okunan veriler bir listeye atanır
-            Tek tek çağırılarak toplanır
-            """
-            
             A=time.strftime('%x')
             B=A[0:2]
             C=A[3:5]
             D=A[6:8]
-            dosya2 = open(str(B+" "+C+" "+D)+".txt","w")  
+            dosya2 = open(str(B+" "+C+" "+D)+".txt","w")
             dosya2.write(str(t))
 
             KronometreUygulamasi()
@@ -69,7 +96,7 @@ def HaftalıkVerimHesaplama():
     try:
         a=float(input("Pazartesi -> "))
         b=float(input("Salı -> "))
-        c=float(input("Çarşamba -> "))
+        c=float(input("Çarşamba -> "))         
         d=float(input("Perşembe -> "))
         e=float(input("Cuma -> "))
         f=float(input("Cumartesi -> "))
@@ -80,7 +107,7 @@ def HaftalıkVerimHesaplama():
 
     gunlukort = float(a + b + c + d + e + f + g) / 7
     hours=[a,b,c,d,e,f,g]
-    gunler=["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"]
+    gunler=["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"]       
     wb = openpyxl.Workbook()
     sheet = wb.active
 
