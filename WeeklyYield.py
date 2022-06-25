@@ -4,39 +4,9 @@ import numpy as np
 import openpyxl
 from openpyxl import Workbook
 from openpyxl import load_workbook
-import mysql.connector
-
-mydb=mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="19071234",
-    database="uygulama1"
-)
-mycursor=mydb.cursor()
-
-def girispaneli():
-    o=input("Giriş yapmak için 1'e,Kayıt olmak için ise 2'ye tıklayın: ")
-    if o=="1":
-        
-    if o=="2":
-        adi=input("Lütfen Adınızı Girin: ")
-        sifre=input("Lütfen Şifrenizi Girin")
-        sql="INSERT INTO uygulama1 (ad,sifre) VALUES (%s,%s)"
-        val=(adi,sifre)
-        mycursor.execute(sql,val)
-        mydb.commit()
-        print(mycursor.rowcount," Kaydınız başarıyla eklenmiştir")
-    
-    else:
-        girispaneli()
-    
-
-
 
 def anauygulama():
     print("Uygulamamıza Hoşgeldiniz!")
-
-    girispaneli()
 
     giris2=input("Kronometre Uygulaması için A'ya tıklayın,Haftalık Verim Hesaplayıcı için ise B'ye tıklayın -->")
     if giris2=="A":
@@ -51,10 +21,6 @@ def anauygulama():
         anauygulama()
 
 
-
-
-
-
 def KronometreUygulamasi():
     a = " "
     gir = input("Kronometreyi başlatmak için T'ye tıklayın -->")
@@ -63,7 +29,8 @@ def KronometreUygulamasi():
         bas=time.strftime('%X')
         print("Başlangıç Zamanı -->", bas)
         bel= input("Kronometreyi durdurmak için X'e tıklayın ->")
-        if bel == "X":
+        bel1=bel.lower()
+        if bel == "x":
             son = time.strftime('%X')
             print("Bitiş Zamanı -->", son)
             bassaat = int(bas[0:2])
@@ -88,15 +55,13 @@ def KronometreUygulamasi():
         pass
 
 
-
-
 def HaftalıkVerimHesaplama():
     print("Günlerin önüne kaç saat çalıştığınızı yazın")
 
     try:
         a=float(input("Pazartesi -> "))
         b=float(input("Salı -> "))
-        c=float(input("Çarşamba -> "))         
+        c=float(input("Çarşamba -> "))          # Günleri geriye alarak son haftayı yazabiliriz aslında
         d=float(input("Perşembe -> "))
         e=float(input("Cuma -> "))
         f=float(input("Cumartesi -> "))
@@ -107,7 +72,7 @@ def HaftalıkVerimHesaplama():
 
     gunlukort = float(a + b + c + d + e + f + g) / 7
     hours=[a,b,c,d,e,f,g]
-    gunler=["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"]       
+    gunler=["Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi","Pazar"]        # Gün adları olabilir --> time modülünü kullanarak
     wb = openpyxl.Workbook()
     sheet = wb.active
 
@@ -174,5 +139,3 @@ def HaftalıkVerimHesaplama():
 
 
 anauygulama()
-
-
