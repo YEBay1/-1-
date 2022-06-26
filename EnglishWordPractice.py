@@ -1,13 +1,3 @@
-"""
-Bu kütüphane harici daha kaliteli bir APİ kullanabilirsiniz
-
-Mesela random yüzünden kelimelerin arka arkaya gelmesini engelleyebilirsiniz ama kelime sayısı arttıkça bu olasılık düşecektir.
-Uygulamayı geliştirebilirsiniz.Farklı modlar ekleyebilirsiniz.Daha temiz kod yazabilirsiniz.
-
-Benden bu kadar
-"""
-
-
 import random
 
 from translate import Translator
